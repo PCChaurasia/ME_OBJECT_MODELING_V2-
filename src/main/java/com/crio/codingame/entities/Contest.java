@@ -36,21 +36,15 @@ public class Contest extends BaseEntity{
             throw new InvalidContestException("Question list is empty");
         }
 
-       // Set<Level> uniqueLevels = new HashSet<>();
-
         for (Question question : qList) {
             Level questionLevel = question.getLevel();
 
             if (questionLevel == null || !questionLevel.equals(contestLevel)) {
                 throw new InvalidContestException("All questions must have the same level as the contest level");
             }
-
-          //  uniqueLevels.add(questionLevel);
         }
 
-        // if (uniqueLevels.size() > 1) {
-        //     throw new InvalidContestException("All questions must have the same level as the contest level");
-        // }
+
     }
 
         
