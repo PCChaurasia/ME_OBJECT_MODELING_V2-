@@ -32,7 +32,29 @@ public class Contest extends BaseEntity{
     //  2. You can use "./gradlew build" to check if your code builds successfully.
 
     private void validateQuestionList(List<Question> qList, Level contestLevel) throws InvalidContestException {
+        if (qList == null || qList.isEmpty()) {
+            throw new InvalidContestException("Question list is empty");
+        }
+
+       // Set<Level> uniqueLevels = new HashSet<>();
+
+        for (Question question : qList) {
+            Level questionLevel = question.getLevel();
+
+            if (questionLevel == null || !questionLevel.equals(contestLevel)) {
+                throw new InvalidContestException("All questions must have the same level as the contest level");
+            }
+
+          //  uniqueLevels.add(questionLevel);
+        }
+
+        // if (uniqueLevels.size() > 1) {
+        //     throw new InvalidContestException("All questions must have the same level as the contest level");
+        // }
     }
+
+        
+    
 
 
     
