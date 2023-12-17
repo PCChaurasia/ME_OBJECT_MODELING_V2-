@@ -9,12 +9,32 @@ public class User extends BaseEntity {
     private final String name;
     private final Integer score;
     private List <Contest> contests;
+    private UserContestQuestions userContestQuestions;
+
+    // public User(String name2){
+    //     this(name2.id,name2.name,name2.score,name2.contests);
+    //     userContestQuestions = name2.userContestQuestions;
+    // }
+
+    public User(String id, String name, Integer score, List<Contest> contests) {
+        this(id,name,score);
+        this.contests = contests;
+    }
+    
+
+    public User(String id, String name, Integer score) {
+        this(name,score);
+        this.id = id;
+        this.userContestQuestions = new UserContestQuestions();
+    }
 
     public User(String name, Integer score) {
         this.name = name;
         this.score = score;
         this.contests = new ArrayList<Contest>();
     }
+
+    
 
     public String getName() {
         return name;
@@ -34,6 +54,22 @@ public class User extends BaseEntity {
 
     public List<Contest> getContests() {
         return contests.stream().collect(Collectors.toList());
+    }
+
+    // TODO: CRIO_TASK_MODULE_SERVICES
+    // Check if Contest is present in the User or Not
+
+    public boolean checkIfContestExists(Contest contest){
+       
+        return contests != null && contests.contains(contest);
+    }
+
+    public void addContestQuestion(Contest contest, List<Question> qList){
+        userContestQuestions.addContestQuestion(contest, qList);
+    }
+
+    public List<Question> getQuestionsByContest(Contest contest){
+        return userContestQuestions.getQuestionsByContest(contest);
     }
 
     @Override
