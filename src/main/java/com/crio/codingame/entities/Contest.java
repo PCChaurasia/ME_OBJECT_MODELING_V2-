@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 import com.crio.codingame.exceptions.InvalidContestException;
 
-public class Contest extends BaseEntity {
+
+public class Contest extends BaseEntity{
     private final String name;
     private final List<Question> questions;
     private final Level level;
     private final User creator;
     private ContestStatus contestStatus;
 
-    public Contest(Contest contest) {
-        this(contest.id, contest.name, contest.questions, contest.level, contest.creator,
-                contest.contestStatus);
+    public Contest(Contest contest){
+        this(contest.id,contest.name,contest.questions,contest.level,contest.creator,contest.contestStatus);
     }
 
     public Contest(String id, String name, List<Question> questions, Level level, User creator,
@@ -28,6 +28,7 @@ public class Contest extends BaseEntity {
             ContestStatus contestStatus) {
         this.name = name;
         this.questions = questions;
+       // this.questions = new ArrayList<>();
         validateQuestionList(questions, level);
         this.level = level;
         this.creator = creator;
