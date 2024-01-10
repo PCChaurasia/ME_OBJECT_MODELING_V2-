@@ -2,7 +2,7 @@ package com.crio.jukebox.services;
 
 import java.util.List;
 import com.crio.codingame.repositories.IUserRepository;
-import com.crio.jukebox.entities.Playlist;
+import com.crio.jukebox.entities.PlayList;
 import com.crio.jukebox.repositories.IPlayListRepository;
 import com.crio.jukebox.repositories.ISongRepository;
 
@@ -39,7 +39,8 @@ public class PlayListService implements IPlayListService{
     }
     
 
-    public boolean deletePlaylist(int userId, int playlistId) {
+    
+    public void deletePlaylist(int userId, int playlistId) {
         Playlist playlistToRemove = null;
     
         for (Playlist playlist : playlists) {
@@ -52,10 +53,8 @@ public class PlayListService implements IPlayListService{
         if (playlistToRemove != null) {
             playlists.remove(playlistToRemove);
             System.out.println("Delete Successful");
-            return true;
         } else {
             System.out.println("Playlist Not Found");
-            return false;
         }
     }
     

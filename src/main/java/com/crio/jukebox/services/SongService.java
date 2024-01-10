@@ -17,17 +17,6 @@ public class SongService implements ISongService{
 
     List<String> songRepositories = new ArrayList<>();
     
-    // @Override
-    // public boolean loadSongs(List<Song> songs) {
-    //     if (songs != null && !songs.isEmpty()) {
-    //         songRepository.addAll(songs);
-    //         System.out.println("Songs Loaded successfully");
-    //         return true;
-    //     } else {
-    //         System.out.println("Failed to load songs. Input list is empty or null.");
-    //         return false;
-    //     }
-    // }
 
     @Override
     public boolean loadSongs(List<String> songs) {

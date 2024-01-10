@@ -3,7 +3,6 @@ package com.crio.codingame.commands;
 import java.util.List;
 
 import com.crio.codingame.dtos.UserRegistrationDto;
-import com.crio.codingame.entities.User;
 import com.crio.codingame.exceptions.ContestNotFoundException;
 import com.crio.codingame.exceptions.InvalidOperationException;
 import com.crio.codingame.exceptions.UserNotFoundException;

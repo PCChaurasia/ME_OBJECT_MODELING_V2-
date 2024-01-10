@@ -1,32 +1,27 @@
 package com.crio.jukebox.entities;
 
 public class User {
-    private final Integer userId;
-    private final String userName;
+    private final String id;
+    private final String name;
     
 
 
 
-    public User(Integer userId, String userName) {
-        this.userId = userId;
-        this.userName = userName;
+    public User(String id, String name) {
+        this.id = id;
+        this.name = name;
         
     }
 
-    // public User(Integer userId, String userName) {
-    //     this.userId = userId;
-    //     this.userName = userName;
-    // }
 
-
-    public String getuserName()
+    public String getName()
     {
-        return userName;
+        return name;
     }
 
-    public Integer getuserId()
+    public String getId()
     {
-        return userId;
+        return id;
     }
 
    
@@ -34,7 +29,9 @@ public class User {
     @Override
     public String toString()
     {
-        return  "User [userId=" + userId + ", userName=" + userName + "]";
+        return  "User {id=" + id +
+         ", name=" + name +
+          "}";
     }
 
 

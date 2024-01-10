@@ -5,7 +5,7 @@ plugins {
 
 ext {
 	buildId = System.currentTimeMillis()
-	codinGameMainClass = "com.crio.codingame.App"
+	//codinGameMainClass = "com.crio.codingame.App"
 	jukeBoxMainClass = "com.crio.jukebox.App"
 }
 

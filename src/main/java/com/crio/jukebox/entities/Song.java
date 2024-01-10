@@ -3,46 +3,55 @@ package com.crio.jukebox.entities;
 import java.util.List;
 
 public class Song {
-    private final String songId;
-    private final String songName;
+    private final String id;
+    private final String name;
     private final String genre;
-    private final String mainArtist;
-    private List<String> otherArtists;
+    private final Album album;
+    private List<Artist> otherArtists;
 
-    // public Song (Song song){
-    //     this(Song.songId, Song.songName, Song.genre, Song.mainArtist, Song.otherArtists);
 
-    // }
+    public Song(Song song){
+        this(song.id, song.name, song.genre, song.album, song.otherArtists);
+    }
 
-    public Song(String songId, String songName, String genre, String mainArtist, List<String> otherArtists){
-        this.songId = songId;
-        this.songName = songName;
+   
+
+    public Song(String id, String name, String genre, Album album, List<Artist> otherArtists) {
+        this.id = id;
+        this.name = name;
         this.genre = genre;
-        this.mainArtist = mainArtist;
+        this.album = album;
         this.otherArtists = otherArtists;
     }
 
     public String getGenre(){
         return genre;
     }
-    public String getMainArtist(){
-        return mainArtist;
+    public String getAlbumName(){
+        return album.getName();
     }
-    public List<String> getOtherArtist(){
+    public List<Artist> getOtherArtists(){
         return otherArtists;
     }
-    public String getSongId(){
-        return songId;
+    public String getId(){
+        return id;
     }
-    public String getSongName(){
-        return songName;
+    public String getName(){
+        return name;
     }
 
 
     @Override
-    public String toString(){
-       return "PlayList [songId=" + songId + ", songName=" + songName + ", genre=" + genre + ",  mainArtist=" + mainArtist + ", otherArtists=" + otherArtists + "]";
+    public String toString() {
+        return "Song{" +
+                "id=" + id +
+                ", name=" + name +
+                ", genre=" + genre +
+                ", album=" + album +
+                ", otherArtists=" + otherArtists +
+                '}';
     }
+
 
     
 }
