@@ -1,7 +1,10 @@
+import java.util.Arrays;
+import com.crio.jukebox.services.PlayListService;
+
 public class CreatePlayListCommand {
 
 
-    Playlist newPlaylist = createPlaylist(1, "MY_PLAYLIST_1", Arrays.asList(1, 4, 5, 6));
+    PlayListService newPlaylist = createPlaylist(1, "MY_PLAYLIST_1", Arrays.asList(1, 4, 5, 6));
 
 if (newPlaylist != null) {
     // Playlist creation was successful, do something with the newPlaylist object

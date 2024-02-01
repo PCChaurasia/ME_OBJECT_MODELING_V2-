@@ -11,6 +11,7 @@ public class PlayListService implements IPlayListService{
     private final IUserRepository userRepository;
     private final ISongRepository songRepository;
     private final IPlayListRepository playListRepository;
+    public String playlistName;
 
     public PlayListService( IUserRepository userRepository,ISongRepository songRepository, IPlayListRepository playListRepository){
         this.userRepository = userRepository;
