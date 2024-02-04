@@ -29,7 +29,7 @@ public class PlayList {
     public String getId(){
         return id;
     }
-    public String getUserId(){
+    public User getUserId(){
         return user.getId();
     }
     public List<Song> getSongs() {

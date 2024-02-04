@@ -27,7 +27,7 @@ public class Song {
     public String getGenre(){
         return genre;
     }
-    public String getAlbumName(){
+    public Album getAlbumName(){
         return album.getName();
     }
     public List<Artist> getOtherArtists(){

@@ -1,5 +1,11 @@
 package com.crio.jukebox.repositories;
 
-public class IUserRepository {
-    public void add(User newUser);
+import java.util.Optional;
+import com.crio.jukebox.entities.User;
+
+public interface IUserRepository extends CRUDRepository<User,String>{
+    public Optional<User> findByName(String name);
+
+    public void add(User newUser); 
+    
 }

@@ -5,6 +5,10 @@ public class Album{
     private final String id;
     private final String name;
     private final Artist artist;
+
+       public Album(Album album){
+           this(album.id, album.name, album.artist);
+       }
     
         public Album(String id, String name, Artist artist) {
             this.id = id;

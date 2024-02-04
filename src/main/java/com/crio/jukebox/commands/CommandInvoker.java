@@ -1,9 +1,12 @@
 package com.crio.jukebox.commands;
 
+
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.crio.jukebox.exceptions.NoSuchCommandException;
+//import com.crio.jukebox.exceptions.NoSuchCommandException;
+import com.crio.jukebox.exceptions.UserNotFoundException;
 
 public class CommandInvoker {
 
@@ -20,11 +23,11 @@ public class CommandInvoker {
         }
     
         // Execute the registered Command
-        public void executeCommand(String commandName, List<String> tokens) throws NoSuchCommandException {
+        public void executeCommand(String commandName, List<String> tokens)  throws UserNotFoundException{
             ICommand command = get(commandName);
             if(command == null){
                 // Handle Exception
-                throw new NoSuchCommandException();
+                throw new UserNotFoundException();
             }
             command.execute(tokens);
         }

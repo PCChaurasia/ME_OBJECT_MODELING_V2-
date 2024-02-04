@@ -22,7 +22,7 @@ public class SongService implements ISongService{
     public boolean loadSongs(List<String> songs) {
         // TODO Auto-generated method stub
         if (songs != null && !songs.isEmpty()) {
-            songRepositories.addAll(songs);
+            songRepository.addAll(songs);
             System.out.println("Songs Loaded successfully");
             return true;
         } else {

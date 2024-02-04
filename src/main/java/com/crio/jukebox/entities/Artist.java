@@ -3,6 +3,10 @@ package com.crio.jukebox.entities;
 public class Artist {
       private final  String id;
       private final  String name;
+
+      public Artist(Artist artist){
+        this(artist.id, artist.name);
+      }
     
         public Artist(String id, String name) {
             this.id = id;

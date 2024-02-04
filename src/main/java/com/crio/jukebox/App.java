@@ -7,8 +7,11 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-import com.crio.codingame.appConfig.ApplicationConfig;
-import com.crio.codingame.exceptions.NoSuchCommandException;
+
+import com.crio.jukebox.appConfig.ApplicationConfig;
+import com.crio.jukebox.commands.CommandInvoker;
+//import com.crio.jukebox.exception.NoSuchCommandException;
+import com.crio.jukebox.exceptions.UserNotFoundException;
 
 
 public class App {
@@ -41,9 +44,9 @@ public class App {
                 line = reader.readLine();
             }
             reader.close();
-        } catch (IOException | NoSuchCommandException e) {
+        } catch (IOException | UserNotFoundException e) {
             e.printStackTrace();
         }
 
-    }
+   }
 }
