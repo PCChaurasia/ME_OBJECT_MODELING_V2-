@@ -13,7 +13,7 @@ ext {
 // Revert back to codinGameMainClass to only run the CodingGame Application.
 application {
 	 mainClass = jukeBoxMainClass
-    //mainClass = codinGameMainClass
+   // mainClass = codinGameMainClass
 }
 
 group = 'com.crio'

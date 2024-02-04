@@ -18,6 +18,7 @@ public class App {
         List<String> commandLineArgs = new LinkedList<>(Arrays.asList(args));
         String expectedSequence = "INPUT_FILE";
         String actualSequence = commandLineArgs.stream()
+        
                 .map(a -> a.split("=")[0])
                 .collect(Collectors.joining("$"));
         if(expectedSequence.equals(actualSequence)){
