@@ -1,11 +1,11 @@
 package com.crio.jukebox.entities;
 
-public class Artist {
-      private final  String id;
+public class Artist extends BaseEntity{
+     
       private final  String name;
 
       public Artist(Artist artist){
-        this(artist.id, artist.name);
+        this( artist.id, artist.name);
       }
     
         public Artist(String id, String name) {
@@ -13,9 +13,7 @@ public class Artist {
             this.name = name;
         }
 
-        public String getId(){
-            return id;
-        }
+        
 
         public String getName(){
             return name;

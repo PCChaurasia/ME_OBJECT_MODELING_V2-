@@ -3,8 +3,8 @@ package com.crio.jukebox.entities;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class User {
-    private final String id;
+public class User extends BaseEntity{
+   // private final String id;
     private final String name;
     private final List<PlayList>playLists;
 
@@ -28,7 +28,7 @@ public class User {
         return name;
     }
 
-    public String getId()
+    public String getUserId()
     {
         return id;
     }

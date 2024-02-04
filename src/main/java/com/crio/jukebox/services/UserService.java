@@ -31,11 +31,12 @@ public class UserService implements IUserService {
 
     @Override
     public User create(String name) throws UserNotFoundException {
-        List<PlayList> playLists;
-        // TODO Auto-generated method stub
-        User newUser = new User(f_id, name, playLists);
-        userRepository.save(newUser);
-        return newUser;
+        // List<PlayList> playLists;
+        // // TODO Auto-generated method stub
+        // User newUser = new User(f_id, name, playLists);
+        // userRepository.save(newUser);
+        // return newUser;
+        return null;
     
     }
     

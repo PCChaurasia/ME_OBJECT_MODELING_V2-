@@ -3,9 +3,9 @@ package com.crio.jukebox.entities;
 import java.util.List;
 
 
-public class PlayList {
-    public final String id;
-    private final User user;
+public class PlayList extends BaseEntity{
+  
+    private final String user;
     private final String name;
     public List<Song> songs;
 
@@ -15,7 +15,7 @@ public class PlayList {
     }
 
    
-    public PlayList(String id, String name, User user, List<Song> songs) {
+    public PlayList( String id,String name, String user, List<Song> songs) {
         this.id = id;
         this.name = name;
         this.user = user;
@@ -26,12 +26,8 @@ public class PlayList {
         return name;
     }
 
-    public String getId(){
-        return id;
-    }
-    public User getUserId(){
-        return user.getId();
-    }
+   
+   
     public List<Song> getSongs() {
         return songs;
     }
@@ -44,6 +40,11 @@ public class PlayList {
                 ", user=" + user +
                 ", songs=" + songs +
                 '}';
+    }
+
+
+    public String getUserId() {
+        return id;
     }
 
 

@@ -1,8 +1,8 @@
 package com.crio.jukebox.entities;
 
-public class Album{
+public class Album extends BaseEntity{
 
-    private final String id;
+    
     private final String name;
     private final Artist artist;
 
@@ -16,10 +16,8 @@ public class Album{
             this.artist = artist;
         }
 
-        public String getId(){
-            return id;
-        }
-        public String getName(){
+        
+        public String getAlbumName(){
             return name;
         }
         public String  getArtistName(){
