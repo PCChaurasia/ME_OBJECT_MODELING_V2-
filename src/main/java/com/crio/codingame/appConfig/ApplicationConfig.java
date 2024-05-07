@@ -43,6 +43,7 @@ public class ApplicationConfig {
     private final WithdrawContestCommand withdrawContestCommand = new WithdrawContestCommand(userService);
 
     private final CommandInvoker commandInvoker = new CommandInvoker();
+    
 
     public CommandInvoker getCommandInvoker(){
         commandInvoker.register("CREATE_USER",createUserCommand);

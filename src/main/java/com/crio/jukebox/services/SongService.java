@@ -1,34 +1,58 @@
 package com.crio.jukebox.services;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.crio.jukebox.entities.Album;
 import com.crio.jukebox.entities.Song;
+import com.crio.jukebox.repositories.IAlbumRepository;
 import com.crio.jukebox.repositories.ISongRepository;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class SongService implements ISongService{
+    private final ISongRepository iSongRepository;
+    private final IAlbumRepository iAlbumRepository;
 
-    private final ISongRepository songRepository;
-
-    public SongService( ISongRepository songRepository){
-        this.songRepository = songRepository;
-
+    public SongService(ISongRepository iSongRepository, IAlbumRepository iAlbumRepository) {
+        this.iSongRepository = iSongRepository;
+        this.iAlbumRepository = iAlbumRepository;
     }
-    
-
-    List<String> songRepositories = new ArrayList<>();
-    
-
     @Override
-    public boolean loadSongs(List<String> songs) {
-        // TODO Auto-generated method stub
-        if (songs != null && !songs.isEmpty()) {
-            songRepository.addAll(songs);
-            System.out.println("Songs Loaded successfully");
-            return true;
-        } else {
-            System.out.println("Failed to load songs. Input list is empty or null.");
-            return false;
+    public void loadSong(String inputFile) {
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(inputFile));
+            String line = reader.readLine();
+            Song song;
+            Album album;
+            while (line != null) {
+                List<String> splitByComma = Arrays.asList(line.split(","));
+                String songId=splitByComma.get(0);
+                String songName=splitByComma.get(1);
+                String genre=splitByComma.get(2);
+                String albumName=splitByComma.get(3);
+                String albumOwner=splitByComma.get(4);
+                List<String> listOfAlbumArtist=Arrays.asList(splitByComma.get(5).split("#"));
+                song=new Song(songId,songName,genre,listOfAlbumArtist);
+                song.setAlbumName(albumName);
+                Song savedSong=iSongRepository.save(song);
+                album=iAlbumRepository.findAlbumByAlbumName(albumName);
+                if(album==null){
+                    album=new Album(null,albumName,new ArrayList<Song>(Arrays.asList(savedSong)),albumOwner);
+                }else{
+                    album.getSongList().add(savedSong);
+                }
+                Album savedAlbum=iAlbumRepository.save(album);
+                // read next line
+                line = reader.readLine();
+
+            }
+            reader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
-    
 }

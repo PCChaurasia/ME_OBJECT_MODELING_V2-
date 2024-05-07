@@ -1,8 +1,11 @@
 package com.crio.jukebox.services;
 
+import java.util.List;
+import com.crio.jukebox.entities.PlayList;
 import com.crio.jukebox.entities.User;
-import com.crio.jukebox.exceptions.UserNotFoundException;
 
 public interface IUserService {
-    public User create(String name)throws UserNotFoundException;
+    public User create(String name);
+    public List<PlayList> getAllPlayList(String userId);
+    
 }

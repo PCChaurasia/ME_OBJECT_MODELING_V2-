@@ -1,53 +1,46 @@
 package com.crio.jukebox.entities;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class User extends BaseEntity{
-   // private final String id;
-    private final String name;
-    private final List<PlayList>playLists;
+    private final String username;
 
-    
-
-
-    public User(User user){
-        this(user.id, user.name, user.playLists);
-    }
-
-    public User(String id, String name, List<PlayList>playLists) {
+    public User(String id,String username) {
         this.id = id;
-        this.name = name;
-        this.playLists = playLists;
-        
+        this.username = username;
     }
-
-
-    public String getName()
-    {
-        return name;
+    
+    public String getName() {
+        return username;
     }
-
-    public String getUserId()
-    {
-        return id;
-    }
-
-   
 
     @Override
-    public String toString()
-    {
-        return  "User {id=" + id +
-         ", name=" + name +
-         ",playList=" + playLists+
-          "}";
-    }
-
-    public List<PlayList> getPlayLists() {
-       return playLists.stream().collect(Collectors.toList());
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
     }
 
 
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        User other = (User) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", name=" + username + " ]";
+    }
 }

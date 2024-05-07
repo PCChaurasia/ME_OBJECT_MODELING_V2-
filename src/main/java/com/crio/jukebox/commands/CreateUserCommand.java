@@ -1,12 +1,12 @@
 package com.crio.jukebox.commands;
 
-import java.util.List;
 import com.crio.jukebox.entities.User;
 import com.crio.jukebox.services.IUserService;
 
-public class CreateUserCommand implements ICommand{
+import java.util.List;
 
-    private IUserService userService;
+public class CreateUserCommand implements ICommand{
+    private final IUserService userService;
 
     public CreateUserCommand(IUserService userService) {
         this.userService = userService;
@@ -14,11 +14,11 @@ public class CreateUserCommand implements ICommand{
 
     @Override
     public void execute(List<String> tokens) {
-        // TODO Auto-generated method stub
-        String name = tokens.get(1);
-        User result = userService.create(name);
-        System.out.println(result);
-        
+        try{
+            User user=userService.create(tokens.get(1));
+            System.out.println(user);
+        }catch (Exception e){
+            System.out.println("Something Go Wrong While Creating User");
+        }
     }
-    
 }

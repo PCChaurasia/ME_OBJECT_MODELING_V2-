@@ -1,15 +1,15 @@
 package com.crio.jukebox.entities;
 
-public class Artist extends BaseEntity{
+public class ArtistGroup extends BaseEntity{
     private final String name;
 
-    public Artist(String id,String name) {
-        this.id = id;
-        this.name = name;
+    public ArtistGroup() {
+        this.name = "";
     }
 
-    public String getName() {
-        return name;
+    public ArtistGroup(String id,String name) {
+        this.name = name;
+        this.id = id;
     }
 
     @Override
@@ -20,6 +20,10 @@ public class Artist extends BaseEntity{
         return result;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -28,7 +32,7 @@ public class Artist extends BaseEntity{
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Artist other = (Artist) obj;
+        ArtistGroup other = (ArtistGroup) obj;
         if (name == null) {
             if (other.name != null)
                 return false;
@@ -39,7 +43,8 @@ public class Artist extends BaseEntity{
 
     @Override
     public String toString() {
-        return "Artist [id=" + id +", name=" + name + "]";
+        return "ArtistGroup [id=" + id +", name=" + name + "]";
     }
+    
     
 }

@@ -2,10 +2,7 @@ package com.crio.codingame.services;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import com.crio.codingame.dtos.UserRegistrationDto;
 import com.crio.codingame.entities.Contest;
 import com.crio.codingame.entities.ContestStatus;
@@ -17,7 +14,7 @@ import com.crio.codingame.exceptions.InvalidOperationException;
 import com.crio.codingame.exceptions.UserNotFoundException;
 import com.crio.codingame.repositories.IContestRepository;
 import com.crio.codingame.repositories.IUserRepository;
-import com.crio.codingame.repositories.UserRepository;
+//import com.crio.codingame.repositories.UserRepository;
 
 public class UserService implements IUserService {
 

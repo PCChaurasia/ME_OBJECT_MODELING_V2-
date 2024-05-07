@@ -1,94 +1,64 @@
 package com.crio.jukebox.repositories;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import com.crio.jukebox.entities.Artist;
 import com.crio.jukebox.entities.Song;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+
 public class SongRepository implements ISongRepository{
-
-    private final Map<String,Song> songMap;
+    private final Map<String,Song> songsList=new HashMap<String,Song>();
     private Integer autoIncrement = 0;
-
-    public SongRepository(){
-        songMap = new HashMap<String,Song>();
-    }
-
-    public SongRepository(Map<String,Song> songMap) {
-        this.songMap = songMap;
-        this.autoIncrement = songMap.size();
-    }
-
     @Override
     public Song save(Song entity) {
-        // TODO Auto-generated method stub
-        if( entity.getId() == null ){
+        if(entity.getId()==null){
             autoIncrement++;
-            Song c = new Song(Integer.toString(autoIncrement),entity.getName(),entity.getGenre(),entity.getAlbumName(),entity.getOtherArtists());
-            songMap.put(c.getId(),c);
-            return c;
+            Song s=new Song(Integer.toString(autoIncrement), entity.getName(), entity.getGenre(), entity.getArtis());
+            songsList.put(s.getId(),s);
+            return s;
         }
-        songMap.put(entity.getId(),entity);
+        songsList.put(entity.getId(),entity);
         return entity;
-        
     }
 
     @Override
     public List<Song> findAll() {
-        // TODO Auto-generated method stub
-        return songMap.values().stream()
-        .collect(Collectors.toList());
+        return songsList.values()
+                        .stream()
+                        .sorted((s1,s2)->Integer.valueOf(s1.getId())-Integer.valueOf(s2.getId()))
+                        .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Song> findById(String id) {
-        // TODO Auto-generated method stub
-        return Optional.ofNullable(songMap.get(id));
+    public Optional<Song> findById(String s) {
+        return Optional.ofNullable(songsList.get(s));
     }
 
     @Override
-    public boolean existsById(String id) {
-        // TODO Auto-generated method stub
+    public boolean existsById(String s) {
         return false;
     }
 
     @Override
     public void delete(Song entity) {
-        // TODO Auto-generated method stub
-        
+
     }
 
     @Override
-    public void deleteById(String id) {
-        // TODO Auto-generated method stub
-        
+    public void deleteById(String s) {
+
     }
 
     @Override
     public long count() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-
-
-    @Override
-    public List<Song> findAllSongArtistWise(Artist artist) {
-        // TODO Auto-generated method stub
-        return null;
+        return songsList.values().stream().count();
     }
 
     @Override
-    public void addAll(List<String> songs) {
-        // TODO Auto-generated method stub
-        
+    public Song findSongById(String songId) {
+        return songsList.values().stream().filter(s->s.getId().equals(songId)).findAny().get();
     }
-
-    
-
-   
-    
 }

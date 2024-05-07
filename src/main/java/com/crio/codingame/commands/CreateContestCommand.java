@@ -46,7 +46,7 @@ public class CreateContestCommand implements ICommand{
         else
         {
             String contestName = tokens.get(1),level = tokens.get(2), contestCreator = tokens.get(3);
-           // Integer numQuestion = Integer.parseInt(tokens.get(4));
+          
             try{
                 System.out.println(contestService.create(contestName, Level.valueOf(level), contestCreator, numQuestion));
 
